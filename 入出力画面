@@ -1,0 +1,27 @@
+## ----------------------------------------------
+## 機能名　：入出力画面.ipynb
+## 機能概要：入出力画面を生成する
+## 引数  　：なし
+## 作成日　：2025.05.22
+## ----------------------------------------------
+# Gradioのインストール（初回のみ）
+!pip install gradio --quiet
+
+# Web UI用ライブラリをインポート
+import gradio as gr
+
+# 入力を受け取って処理する関数（ここではそのまま返す）
+def greet(name):
+    return f"こんにちは、{name}さん！これはGradioのWeb UIです。"
+
+# Gradioインターフェースを定義
+demo = gr.Interface(
+    fn=greet,                                # 入力に対して実行する関数
+    inputs=gr.Textbox(label="名前を入力してください"),  # 入力欄（Textbox）
+    outputs=gr.Textbox(label="出力メッセージ"),        # 出力欄（Textbox）
+    title="🖥 Colabで作る簡単Web UI",
+    description="名前を入力すると挨拶メッセージが表示されます。",
+)
+
+# 公開URLを有効にして起動
+demo.launch(share=True)
